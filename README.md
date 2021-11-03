@@ -89,3 +89,4 @@ neural information processing systems, 27, 2014.
 - [MALK19] Sudipto Mukherjee, Himanshu Asnani, Eugene Lin, and Sreeram Kannan. Clustergan:
 Latent space clustering in generative adversarial networks. In Proceedings of the AAAI
 Conference on Artificial Intelligence, volume 33, pages 4610–4617, 2019.
+- https://github.com/eriklindernoren/PyTorch-GAN from PapersWithCode
