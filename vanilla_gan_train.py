@@ -65,7 +65,7 @@ epochs = tqdm(range(num_epochs))
 
 for epoch in epochs:
     epoch_g_loss, epoch_d_loss = 0, 0
-    for bi, data in enumerate(dataloader):
+    for data in dataloader:
         image, _ = data # only need the image
         image = image.to(device)
         for step in range(k):
