@@ -82,7 +82,9 @@
 
 ### Model Structure
 
-![](https://github.com/JasonFengGit/Generative-Adversarial-Networks/blob/master/imgs/cluster_gan.png?raw=true)
+<p align="center">
+  <img height="300px" src="https://github.com/JasonFengGit/Generative-Adversarial-Networks/blob/master/imgs/cluster_gan.png?raw=true" alt/>
+</p>
 
 > Adding an Encoder: X - > Z
 
@@ -149,11 +151,17 @@ nn.Sequential(
 >
 > *Generator&Encoder seem to be not strong enough*
 
-![](https://github.com/JasonFengGit/Generative-Adversarial-Networks/blob/master/imgs/cluster_gan_loss.png?raw=true)
+<p align="center">
+  <img src="https://github.com/JasonFengGit/Generative-Adversarial-Networks/blob/master/imgs/cluster_gan_loss.png?raw=true" alt/>
+</p>
 
-![](https://github.com/JasonFengGit/Generative-Adversarial-Networks/blob/master/imgs/enc_mse_loss.png?raw=true)
+<p align="center">
+  <img src="https://github.com/JasonFengGit/Generative-Adversarial-Networks/blob/master/imgs/enc_mse_loss.png?raw=true" alt/>
+</p>
 
-![](https://github.com/JasonFengGit/Generative-Adversarial-Networks/blob/master/imgs/enc_cross_entropy_loss.png?raw=true)
+<p align="center">
+  <img src="https://github.com/JasonFengGit/Generative-Adversarial-Networks/blob/master/imgs/enc_cross_entropy_loss.png?raw=true" alt/>
+</p>
 
 ### Generated Results During Training
 
@@ -161,7 +169,9 @@ nn.Sequential(
 >
 > *For Cluster GAN, I make the noise for display ordered by 10 classes*
 
-![](https://github.com/JasonFengGit/Generative-Adversarial-Networks/blob/master/imgs/cluster_gan_results.gif?raw=true)
+<p align="center">
+  <img height="450px" src="https://github.com/JasonFengGit/Generative-Adversarial-Networks/blob/master/imgs/cluster_gan_results.gif?raw=true" alt/>
+</p>
 
 
 
