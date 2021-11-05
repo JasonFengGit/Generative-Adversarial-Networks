@@ -80,7 +80,90 @@
 
 ## ClusterGAN
 
-TODO
+### Model Structure
+
+![](https://github.com/JasonFengGit/Generative-Adversarial-Networks/blob/master/imgs/cluster_gan.png?raw=true)
+
+> Adding an Encoder: X - > Z
+
+#### Final Generator Structure
+
+```python
+nn.Sequential(
+    nn.Linear(z_dim + num_class, 1024),
+    nn.BatchNorm1d(1024),
+    nn.LeakyReLU(0.2),
+    nn.Linear(1024, prod),
+    nn.BatchNorm1d(prod),
+    nn.LeakyReLU(0.2),
+
+    Reshape((128, 7, 7)),
+
+    nn.ConvTranspose2d(128, 64, 4, stride=2, padding=1, bias=True),
+    nn.BatchNorm2d(64),
+    nn.LeakyReLU(0.2),
+
+    nn.ConvTranspose2d(64, 1, 4, stride=2, padding=1, bias=True),
+    nn.Sigmoid()
+)
+```
+
+#### Final Encoder Structure
+
+```python
+nn.Sequential(
+    nn.Conv2d(1, 64, 4, stride=2, bias=True),
+    nn.LeakyReLU(0.2),
+    nn.Conv2d(64, 128, 4, stride=2, bias=True),
+    nn.LeakyReLU(0.2),
+
+    Reshape((prod,)),
+
+    torch.nn.Linear(prod, 1024),
+    nn.LeakyReLU(0.2),
+    torch.nn.Linear(1024, z_dim + num_class)
+)
+```
+
+#### Final Discriminator Structure
+
+```python
+nn.Sequential(
+    nn.Conv2d(1, 64, 4, stride=2, bias=True),
+    nn.LeakyReLU(0.2),
+    nn.Conv2d(64, 128, 4, stride=2, bias=True),
+    nn.LeakyReLU(0.2),
+
+    Reshape((prod,)),
+
+    nn.Linear(prod, 1024),
+    nn.LeakyReLU(0.2),
+    nn.Linear(1024, 1),
+    nn.Sigmoid(),
+)
+```
+
+### Training Losses
+
+> *Trained for 500 epochs on a GPU*
+>
+> *Generator&Encoder seem to be not strong enough*
+
+![](https://github.com/JasonFengGit/Generative-Adversarial-Networks/blob/master/imgs/cluster_gan_loss.png?raw=true)
+
+![](https://github.com/JasonFengGit/Generative-Adversarial-Networks/blob/master/imgs/enc_mse_loss.png?raw=true)
+
+![](https://github.com/JasonFengGit/Generative-Adversarial-Networks/blob/master/imgs/enc_cross_entropy_loss.png?raw=true)
+
+### Generated Results During Training
+
+> *Trained for 500 epochs on a GPU*
+>
+> *For Cluster GAN, I make the noise for display ordered by 10 classes*
+
+![](https://github.com/JasonFengGit/Generative-Adversarial-Networks/blob/master/imgs/cluster_gan_results.gif?raw=true)
+
+
 
 ## Reference
 - [GPAM+14] Ian Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David Warde-Farley, Sherjil
